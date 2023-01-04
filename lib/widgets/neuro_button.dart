@@ -10,7 +10,6 @@ class NeuroButton extends StatelessWidget {
     return Container(
         padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
-            //shape: BoxShape.circle,
             borderRadius: BorderRadius.circular(20),
             color: Color.fromARGB(255, 240, 237, 237),
             boxShadow: [
@@ -18,12 +17,12 @@ class NeuroButton extends StatelessWidget {
                   color: Colors.grey.shade600,
                   offset: Offset(4.0, 4.0),
                   blurRadius: 15.0,
-                  spreadRadius: 1.0),
+                  spreadRadius: 5.0),
               const BoxShadow(
                   color: Colors.white,
                   offset: Offset(-4.0, -4.0),
                   blurRadius: 15.0,
-                  spreadRadius: 1.0)
+                  spreadRadius: 5.0)
             ]),
         child: child);
   }

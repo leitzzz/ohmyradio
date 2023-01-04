@@ -14,7 +14,7 @@ class PlayerPage extends StatefulWidget {
 }
 
 class _PlayerPageState extends State<PlayerPage> {
-  RadioPlayer _radioPlayer = RadioPlayer();
+  final RadioPlayer _radioPlayer = RadioPlayer();
   bool isPlaying = false;
   List<String>? metadata;
 
@@ -64,7 +64,7 @@ class _PlayerPageState extends State<PlayerPage> {
                         NeuroButton(
                             child: IconButton(
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  !isPlaying ? Navigator.pop(context) : null;
                                 },
                                 icon: Icon(Icons.arrow_back_rounded,
                                     color: Colors.grey.shade700)))
@@ -88,6 +88,10 @@ class _PlayerPageState extends State<PlayerPage> {
                             )),
                       ),
                     )),
+                    isPlaying
+                        ? NeuroButton(
+                            child: Image.asset('assets/images/equalizer.gif'))
+                        : Container(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -95,6 +99,9 @@ class _PlayerPageState extends State<PlayerPage> {
                             child: IconButton(
                                 onPressed: () {
                                   _radioPlayer.play();
+                                  setState(() {
+                                    isPlaying = true;
+                                  });
                                 },
                                 icon: Icon(Icons.play_arrow,
                                     color: Colors.grey.shade700))),
@@ -102,6 +109,9 @@ class _PlayerPageState extends State<PlayerPage> {
                             child: IconButton(
                                 onPressed: () {
                                   _radioPlayer.pause();
+                                  setState(() {
+                                    isPlaying = false;
+                                  });
                                 },
                                 icon: Icon(Icons.stop_circle,
                                     color: Colors.grey.shade700)))
